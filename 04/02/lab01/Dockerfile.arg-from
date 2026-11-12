@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+
+ARG ALPINE_VERSION=3.24
+
+FROM alpine:${ALPINE_VERSION}
+
+RUN echo "before: [$ALPINE_VERSION]" > /alpine-version.txt
+ARG ALPINE_VERSION
+RUN echo "AFTER: [$ALPINE_VERSION]" >> /alpine-version.txt
+
+CMD ["cat", "/alpine-version.txt"]
